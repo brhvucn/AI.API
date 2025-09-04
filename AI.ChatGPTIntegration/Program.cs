@@ -1,4 +1,7 @@
+using AI.ChatGPTIntegration.Agents;
+using AI.ChatGPTIntegration.DAL;
 using AI.ChatGPTIntegration.Models.Config;
+using AI.ChatGPTIntegration.Models.Requests;
 using AI.ChatGPTIntegration.Services;
 using AI.ChatGPTIntegration.Services.Contracts;
 
@@ -11,10 +14,12 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 builder.Services.AddHttpClient();
-//service registrations
+//service registrations for the DI container
 builder.Services.AddScoped<IHttpService, HttpService>();
+builder.Services.AddScoped<FAQRepository>();
+builder.Services.AddScoped<SimpleAgent>();
 //build configurations
-builder.Services.Configure<OpenAISettings>(builder.Configuration.GetSection("OpenAI"));
+builder.Services.Configure<OpenAISettings>(builder.Configuration.GetSection("OpenAI")); //map to the section in the appsettings.json file
 
 var app = builder.Build();
 

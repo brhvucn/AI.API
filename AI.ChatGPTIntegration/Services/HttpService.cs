@@ -3,6 +3,9 @@ using System.Text.Json;
 
 namespace AI.ChatGPTIntegration.Services
 {
+    /// <summary>
+    /// implements methods for making HTTP requests.
+    /// </summary>
     public class HttpService : IHttpService
     {
         private readonly HttpClient _httpClient;
