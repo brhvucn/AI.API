@@ -9,8 +9,7 @@ services:
     ports:
       - "5432:5432"
     volumes:
-      - db-data:/var/lib/postgresql/data
-      # Init-scripts k�res kun f�rste gang volume er tomt
+      - db-data:/var/lib/postgresql/data     
       - ./initdb:/docker-entrypoint-initdb.d:ro
     healthcheck:
       test: ["CMD-SHELL", "pg_isready -U postgres -d appdb"]
